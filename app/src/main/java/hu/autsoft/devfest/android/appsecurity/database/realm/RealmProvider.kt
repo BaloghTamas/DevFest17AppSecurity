@@ -31,10 +31,10 @@ object RealmProvider {
             manager.setDerivedPassword(HMAC_KEY, password!!, 256)
         }
 
-        var aesKey: ByteArray? = manager.getDerivedPassword(AES_KEY, password!!, 256)
-        var hmacKey: ByteArray? = manager.getDerivedPassword(HMAC_KEY, password!!, 256)
+        val aesKey: ByteArray = manager.getDerivedPassword(AES_KEY, password!!, 256)
+        val hmacKey: ByteArray = manager.getDerivedPassword(HMAC_KEY, password!!, 256)
 
-        val fullKey: ByteArray = aesKey!!.plus(hmacKey!!)
+        val fullKey: ByteArray = aesKey + hmacKey
         return fullKey
     }
 
@@ -44,6 +44,5 @@ object RealmProvider {
         manager.removePassword(AES_KEY)
         manager.removePassword(HMAC_KEY)
     }
-
 
 }

@@ -1,13 +1,12 @@
 package hu.autsoft.devfest.android.appsecurity.network
 
-import android.content.Context
 import android.util.Log
 import okhttp3.Interceptor
 import okhttp3.Response
 import java.io.IOException
 
 
-class TlsInterceptor(val context: Context) : Interceptor {
+class TlsInterceptor : Interceptor {
 
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response {

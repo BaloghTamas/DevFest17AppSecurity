@@ -73,7 +73,7 @@ object OkHttpProvider {
         val client = OkHttpClient.Builder()
                 .connectionSpecs(listOf(builder.build()))
                 .setSelfSignedCert(context, R.raw.github_cert, KEYSTORE_PASSWORD, FORCE_TLS_1_2)
-                .addInterceptor(TlsInterceptor(context))
+                .addInterceptor(TlsInterceptor())
                 .build()
         return client
     }

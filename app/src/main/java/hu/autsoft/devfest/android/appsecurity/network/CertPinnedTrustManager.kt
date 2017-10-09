@@ -46,7 +46,7 @@ private fun getTrustManagers(context: Context, keyStoreFile: Int, keystorePasswo
 
 private fun extractX509TrustManager(trustManagers: Array<TrustManager>): X509TrustManager {
     if (trustManagers.size != 1 || !(trustManagers[0] is X509TrustManager)) {
-        throw IllegalStateException("Unexpected default trust managers:" + Arrays.toString(trustManagers))
+        throw IllegalStateException("Unexpected default trust managers: ${Arrays.toString(trustManagers)}")
     }
     return trustManagers[0] as X509TrustManager
 }

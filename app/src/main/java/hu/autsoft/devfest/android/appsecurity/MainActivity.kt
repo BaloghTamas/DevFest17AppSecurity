@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun saveToRealmAndQuery(userData: String?) {
         //Prompt the user for password - never store or burn it in, use it as a char array
-        var contentOfAnEditText: CharArray? = "SuperSecretUserPassword".toCharArray()
+        val contentOfAnEditText: CharArray = "SuperSecretUserPassword".toCharArray()
 
         val realm = RealmProvider.provideRealm(this, contentOfAnEditText)
 
@@ -46,15 +46,15 @@ class MainActivity : AppCompatActivity() {
 
 
     @Throws(Exception::class)
-    fun getUserData(): String? {
+    private fun getUserData(): String? {
         val request = Request.Builder()
                 .url("https://api.github.com/users/baloghtamas")
                 .build()
 
-        var client = OkHttpProvider.provideSecureOkHttpClient(this)
+        val client = OkHttpProvider.provideSecureOkHttpClient(this)
 
-        client.newCall(request).execute().use({ response ->
+        client.newCall(request).execute().use { response ->
             return response.body()?.string()
-        })
+        }
     }
 }
